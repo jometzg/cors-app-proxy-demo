@@ -195,6 +195,25 @@ The code for the application is:
 </body>
 </html>
 ````
+The code makes 4 attempts to call the API:
+1. with no CORS headers
+2. with the correct endpoint (the AD application proxy) - but with no protocol
+3. the correct endpoint with the HTTPS protocol
+4. Wildcard
+
+## Results
+With the web page deployed to an Azure Static Web site, below is the response:
+![alt text](images/browser-response.png "browser response")
+
+looking at the dev tools in the browser confirms the CORS issues:
+![alt text](images/browser-dev-tools.png "Browser dev tools")
+
+# Conclusion
+In order for an application hosted in a browser to effectively use an on-premise web API via Entra Application Proxy, the fastest approach is to augment the returned headers on the API to be that of the origin hosting the web app - including its protocil. For example *Access-Control-Allow-Origin: https://agreeable-mud-0bea1841e.4.azurestaticapps.net/*
+
+The use of the wildcard for this header is really to be discouraged as it bypasses all of the controls.
+
+The main challenge is the knowledge of the origin's host name is needed at the API to add the right header. This could also be by-passed by configuring a custom domain for the hosting URL of the web application that needs to call the API. This will mean that the CORS header added to the API will be more stable over time. For static web apps, this is disussed [here](https://learn.microsoft.com/en-us/azure/static-web-apps/custom-domain)
 
 
 
