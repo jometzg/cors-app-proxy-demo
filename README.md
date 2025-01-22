@@ -1,9 +1,9 @@
 # CORS With Entra App Proxy Demo
 This repo is a worked example of what CORS settings are needed for an API exposed via Entra Application Proxy. [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) headers are needed when a web browser attempts to make calls to an origin other than itself. This is a security mechanism.
 
-For an on-premise web API, [Entra Application Proxy](https://learn.microsoft.com/en-us/entra/identity/app-proxy/overview-what-is-app-proxy) is one of the mechanisms by which the web API can be exposed in a controlled manner. So, the proxy created for the application becomes important as the on-premise API needs to add the right [CORS headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). This is also discussed in the Application Proxy [documentation](https://learn.microsoft.com/en-us/entra/identity/app-proxy/application-proxy-understand-cors-issues).
+For an on-premise web API, [Entra Application Proxy](https://learn.microsoft.com/en-us/entra/identity/app-proxy/overview-what-is-app-proxy) is one of the mechanisms by which the web API can be exposed in a controlled manner. The use of Entra App Proxy creates a URL that an application may use to automatically route to the on-premise API - even if that API has no public-facing API address itself.
 
-This repo seeks to clarify exactly what needs to be done.
+This repo seeks to clarify exactly what needs to be done to get the combination of a web app, the App Proxy and API working together.
 
 ## The problem
 If a single-page web application (SPA) built in the likes of React or Angular needs to call APIs that are not hosted from the same origin that served the SPA, then connections to these APIs will be refused. This means that applications must either host all of their needed APIs or (in the case of CORS), some configuration created that tells the browser that the web API is happy to accept requests from specific origins. Note it is for the API to define which origins from which it is willing to accept requests.
