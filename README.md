@@ -6,10 +6,10 @@ For an on-premise web API, [Entra Application Proxy](https://learn.microsoft.com
 This repo seeks to clarify exactly what needs to be done.
 
 ## The problem
-If a single-page web application (SPA) built in the likes of React or Angular needs to call APIs that are not hosted from the same origin as serveed the SPA, then connections to these APIs will be refused. This means that applications must either host all of their needed APIs or (in the case of CORS), some configuration created that tells the browser that the web API is happy to accept requests from specific origins.
+If a single-page web application (SPA) built in the likes of React or Angular needs to call APIs that are not hosted from the same origin that served the SPA, then connections to these APIs will be refused. This means that applications must either host all of their needed APIs or (in the case of CORS), some configuration created that tells the browser that the web API is happy to accept requests from specific origins. Note it is for the API to define which origins from which it is willing to accept requests.
 
 ## The Approach
-This repo takes the approach of augmenting the on-premise web API to add the correct CORS headers to responses. it could also be that another proxy between the Entra proxy and the API could also do this, but adding the headers in the API is the simplest approach.
+This repo takes the approach of augmenting the on-premise web API to add the correct CORS headers to responses. There may be other approaches, but adding the headers in the API is the simplest approach.
 
 ## The Demo
 This demo has three components:
