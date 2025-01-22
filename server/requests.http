@@ -1,0 +1,11 @@
+GET http://127.0.0.1:5000/api/data
+
+### with specific CORS headers
+GET http://127.0.0.1:5000/api/corsdata
+
+
+### with * CORS headers
+GET http://127.0.0.1:5000/api/corsstardata
+
+#### call the proxy
+GET https://pythontest-mngenvmcap485016.msappproxy.net/api/data
