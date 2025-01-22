@@ -203,7 +203,7 @@ The code makes 4 attempts to call the API:
 
 ## Results
 With the web page deployed to an Azure Static Web site, below is the response:
-![alt text](images/browser-response.png "browser response")
+![alt text](images/browser-responses.png "browser responses")
 
 looking at the dev tools in the browser confirms the CORS issues:
 ![alt text](images/browser-dev-tools.png "Browser dev tools")
